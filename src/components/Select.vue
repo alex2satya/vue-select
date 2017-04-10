@@ -38,6 +38,9 @@
     bottom: 1px;
   }
 
+  .v-select.open.no-options .dropdown-menu {
+    display: none !important;
+  }
   .v-select.open .open-indicator:before {
     transform: rotate(315deg);
   }
@@ -172,7 +175,7 @@
 </style>
 
 <template>
-  <div class="dropdown v-select" :class="dropdownClasses">
+  <div class="dropdown v-select" :class="[{ 'no-options': !filteredOptions.length }, dropdownClasses]">
     <div ref="toggle" @mousedown.prevent="toggleDropdown" class="dropdown-toggle clearfix" type="button">
 
         <span class="selected-tag" v-for="option in valueAsArray" v-bind:key="option.index">
